@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^$ index.php [L]
+RewriteCond $1 !^(themes|api|index.php|css|documents|assets|cdn|ontology_sparqlib)
+RewriteRule ^(.*)$ index.php/$1 [L]

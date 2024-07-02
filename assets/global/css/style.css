@@ -1,0 +1,73 @@
+:root {
+  --black: #727478;
+  --grey: #7f8184;
+  --yellow: #edc932;
+  --gradient: linear-gradient(45deg, #8b8acc, #bc8bcd);
+}
+
+
+
+.rating-box {
+margin:auto;
+  width: 470px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 70px 50px;
+  
+  background: linear-gradient(-60deg, #ffffff90, #ffffffff);
+  border: solid 5px transparent;
+  background-clip: padding-box;
+ 
+}
+.rating-box h1 {
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--black);
+  text-transform: capitalize;
+  text-align: center;
+}
+.rating-box p {
+  font-size: 15px;
+  color: var(--grey);
+  margin-bottom: 40px;
+  text-align: center;
+}
+.rating-box .stars {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.rating-box-2 .stars {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.rating-box .stars i {
+  color: var(--grey);
+  font-size: 40px;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.rating-box-2 .stars i {
+  color: var(--grey);
+  font-size: 40px;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.rating-box-2 .stars i {
+  color: var(--grey);
+  font-size: 40px;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.rating-box .stars i.active {
+  color: var(--yellow);
+}
+.rating-box-2 .stars i.active {
+  color: var(--yellow);
+}

@@ -1,0 +1,71 @@
+<style>
+#table_paginate { float:right !important }
+#table_paginate ul { margin-top:0px !important }
+.details-less { display:none }
+</style>
+
+<div class="note note-bordered note-danger" style="text-align:center;background:rgb(240,240,0)">
+    <h4><strong>Petunjuk : </strong></h4>
+    <h4><strong>Misal anda tidak menyukai satu produkpun yang direkomendasikan, maka anda jangan memilih satu produkpun, lalu klik "Next"</strong></h4>
+</div>
+
+<div style="position:fixed;right:0;top:50%;width:14em;margin-top:-2.5em;color:rgb(240,0,0);background-color:rgba(240,240,0,0.4);padding:5px">
+Kasus 3: Anda tidak menyukai satu produkpun yang direkomendasikan</br>
+</br>
+Model : B
+</div>
+
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption caption-md">
+            <i class="icon-globe font-green-sharp"></i>
+            <span class="caption-subject font-green-sharp bold uppercase">Hasil Rekomendasi Produk</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+    	<?php if(empty($result)) { ?>
+        <div class="note note-bordered note-danger" style="text-align:center">
+            <h4>Maaf produk yang anda inginkan tidak tersedia</h4>
+            <button type="button" onClick="qsr()" class="btn red wrap12"><i class="fa fa-refresh"></i> &nbsp; Ulangi</button>
+        </div>
+        <?php } else { ?>
+        <div class="note note-bordered note-danger" style="text-align:center">
+            <h4>berikut ini adalah produk yang sesuai dengan spesifikasi teknis yang ada inginkan. Silakan pilih satu atau beberapa produk yang anda inginkan, kemudian klik tombol “Next” di bawah ini</h4>
+            <button type="button" onClick="chsr()" class="btn red wrap12">Next &nbsp; &nbsp; <i class="fa fa-caret-right"></i></button>
+        </div>
+        <div class="table-container">
+        	<form role="form" id="frm_r">
+        	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover" id="table">
+                <thead>
+                    <tr>
+                        <th width="10%">Gambar</th>
+                        <th width="80%">Deskripsi Produk</th>
+                        <th width="10%">Pilih produk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<?php $id = 1; foreach($result as $row) { ?>
+                	<tr>
+                        <td><img src="cdn/images/<?= $row['produk'] ?>.jpg" width="100" style="width:100px" /></td>
+                        <td><strong><?= str_replace('_', ' ', $row['produk']) ?></strong><br />
+							<p><?= $row['explain'] ?></p>
+                            <button type="button" onclick="show_details(<?= $id ?>)" class="show-details btn btn-xs red">Details <i class="fa fa-caret-right"></i></button>
+                            <p id="txt-<?= $id ?>" class="details-less"><?= implode('<br>', $row['detail']) ?></p></td>
+                        <td><input type="checkbox" class="pilprod" name="product[]" value="<?= $row['produk'] ?>" /></td>
+                    </tr>
+                    <?php  $id++; }?>
+                </tbody>
+            </table>
+            </form>
+    	</div>
+        <div class="note note-bordered note-danger" style="text-align:center">
+            <h4>Pilih produk yang menurut anda sesuai</h4>
+            <button type="button" onClick="chsr()" class="btn red wrap12">Next &nbsp; &nbsp; <i class="fa fa-caret-right"></i></button>
+        </div>        
+        <?php } ?>
+    </div>
+</div>
+
+<script language="javascript">
+var limit_viewed = <?= $this->config->item('limit_viewed') ?>;
+</script>
